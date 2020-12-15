@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Video Analyzer</title>
+  </head>
+  <body>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="myfile" />
+      <button type="submit">Upload</button>
+    </form>
+    <table border="1px solid">
+      <tbody>
+        <tr style="font-weight: bold">
+          <td>uid</td>
+          <td>processed</td>
+          <td>frames_processed</td>
+          <td>frames_left</td>
+          <td>frames_rate</td>
+          <td>data</td>
+          <td>status</td>
+          <td>start_time</td>
+          <td>end_time</td>
+        </tr>
+        {% for vid in video %}
+        <tr>
+          <td>{{vid.uid}}</td>
+          <td>{{vid.processed}}</td>
+          <td>{{vid.frames_processed}}</td>
+          <td>{{vid.frames_left}}</td>
+          <td>{{vid.frames_rate}}</td>
+          <td>{{vid.data}}</td>
+          <td>{{vid.status}}</td>
+          <td>{{vid.start_time}}</td>
+          <td>{{vid.end_time}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
